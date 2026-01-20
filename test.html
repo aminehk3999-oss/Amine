@@ -1,0 +1,176 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>منصة استثمار احترافية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Tahoma, Arial;
+    background:#0f172a;
+    margin:0;
+    color:#fff;
+}
+.container{
+    max-width:420px;
+    margin:30px auto;
+    background:#020617;
+    padding:20px;
+    border-radius:12px;
+}
+h2{
+    text-align:center;
+    color:#22c55e;
+}
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border-radius:8px;
+    border:none;
+    font-size:15px;
+}
+input{
+    background:#0f172a;
+    color:#fff;
+}
+button{
+    background:#22c55e;
+    color:#000;
+    cursor:pointer;
+    font-weight:bold;
+}
+button:hover{
+    opacity:0.9;
+}
+.link{
+    text-align:center;
+    margin-top:10px;
+    color:#38bdf8;
+    cursor:pointer;
+}
+.hidden{display:none;}
+.card{
+    background:#020617;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+    border:1px solid #1e293b;
+}
+.vip{
+    border:2px solid #22c55e;
+}
+.menu button{
+    margin-top:8px;
+    background:#1e293b;
+    color:#fff;
+}
+.badge{
+    background:#22c55e;
+    color:#000;
+    padding:4px 8px;
+    border-radius:6px;
+    font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- تسجيل الدخول -->
+<div class="container" id="login">
+    <h2>تسجيل الدخول</h2>
+    <input type="tel" placeholder="رقم الهاتف">
+    <input type="password" placeholder="كلمة السر">
+    <button onclick="showDashboard()">دخول</button>
+    <div class="link" onclick="switchView('register')">إنشاء حساب جديد</div>
+</div>
+
+<!-- التسجيل -->
+<div class="container hidden" id="register">
+    <h2>إنشاء حساب</h2>
+    <input type="tel" placeholder="رقم الهاتف">
+    <input type="password" placeholder="كلمة السر">
+    <input type="text" placeholder="رمز التحقق (OTP)">
+    <button onclick="showDashboard()">تسجيل</button>
+    <div class="link" onclick="switchView('login')">عودة لتسجيل الدخول</div>
+</div>
+
+<!-- لوحة التحكم -->
+<div class="container hidden" id="dashboard">
+    <h2>لوحة التحكم</h2>
+
+    <div class="menu">
+        <button onclick="switchView('invest')">منصات الاستثمار</button>
+        <button onclick="switchView('wallet')">إيداع / سحب</button>
+        <button onclick="switchView('bank')">ربط بطاقة بنكية</button>
+        <button onclick="switchView('login')">تسجيل الخروج</button>
+    </div>
+</div>
+
+<!-- الاستثمار -->
+<div class="container hidden" id="invest">
+    <h2>خطط الاستثمار</h2>
+
+    <div class="card vip">
+        <h3>VIP 1 <span class="badge">نشط</span></h3>
+        <p>أرباح يومية – مستوى مبتدئ</p>
+        <button>استثمر الآن</button>
+    </div>
+
+    <div class="card vip">
+        <h3>VIP 2</h3>
+        <p>أرباح أعلى – مستوى متوسط</p>
+        <button>استثمر الآن</button>
+    </div>
+
+    <div class="card vip">
+        <h3>VIP 3</h3>
+        <p>أرباح مميزة – مستوى احترافي</p>
+        <button>استثمر الآن</button>
+    </div>
+
+    <button onclick="switchView('dashboard')">رجوع</button>
+</div>
+
+<!-- المحفظة -->
+<div class="container hidden" id="wallet">
+    <h2>الإيداع و السحب</h2>
+
+    <div class="card">
+        <h4>رقم حساب الإيداع (بريدي موب)</h4>
+        <p style="color:#22c55e;font-weight:bold;">
+            00799999002686684187
+        </p>
+    </div>
+
+    <input type="number" placeholder="المبلغ">
+    <button>طلب إيداع</button>
+    <button style="background:#facc15;">طلب سحب</button>
+
+    <button onclick="switchView('dashboard')">رجوع</button>
+</div>
+
+<!-- البطاقة البنكية -->
+<div class="container hidden" id="bank">
+    <h2>ربط بطاقة بنكية</h2>
+    <input type="text" placeholder="اسم صاحب البطاقة">
+    <input type="text" placeholder="رقم البطاقة">
+    <input type="text" placeholder="تاريخ الانتهاء">
+    <button>ربط البطاقة</button>
+    <button onclick="switchView('dashboard')">رجوع</button>
+</div>
+
+<script>
+function switchView(id){
+    document.querySelectorAll('.container').forEach(c=>c.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+}
+function showDashboard(){
+    switchView('dashboard');
+}
+</script>
+
+</body>
+</html>
